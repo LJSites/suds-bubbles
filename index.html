@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  Suds & Bubbles — Mr. Lee's dry cleaner, Covina, CA
+  Archetype: RETRO SIGNAGE (hand-painted storefront / awning aesthetic — bottle green, mustard, cream)
+
+  Structural decisions:
+   - Hero is type-only. No photograph, no dark overlay, no rounded-pill CTA.
+     Giant condensed signage type fills the awning; phone number is the dominant element.
+   - Top bar is a flat utility strip (hours status + phone) — no centered logo lockup, no hamburger drawer.
+   - Services rendered as a printed service menu with leader dots, not three icon cards.
+   - The actual back-to-school promo image anchors a featured strip mid-page.
+   - Testimonies are oversized pull quotes stacked vertically on the cream field. No cards, no avatars, no stars.
+   - Visit section pairs a hours ticket with an embedded map.
+   - One repeated CTA: "Call Now" (tel:). Used in hero and again before the footer.
+   - Animation: a single horizontal service ticker. That is the only thing that moves.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suds &amp; Bubbles — Dry Cleaners &amp; Tailoring · Covina, CA</title>
+<meta name="description" content="Mr. Lee's neighborhood dry cleaner in Covina, California. Dry cleaning, alterations, wash &amp; fold — friendly service Covina has trusted for years.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #14110A;
+    --cream: #F2EBDA;
+    --cream-2: #E9E0CA;
+    --paper: #F7F1E1;
+    --bottle: #1F4030;
+    --bottle-deep: #142A1E;
+    --mustard: #F0B83C;
+    --mustard-2: #E8AA1E;
+    --brick: #B23A2C;
+    --rule: rgba(20,17,10,0.18);
+    --rule-cream: rgba(242,235,218,0.22);
+
+    --display: "Big Shoulders Display", "Arial Narrow", "Helvetica Condensed", sans-serif;
+    --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+    --mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+
+  *,*::before,*::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; }
+
+  /* ===== Utility ===== */
+  .wrap {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 22px;
+  }
+  @media (min-width: 800px) {
+    .wrap { padding: 0 40px; }
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .display {
+    font-family: var(--display);
+    font-weight: 900;
+    line-height: 0.86;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+  }
+
+  /* ===== Top utility bar ===== */
+  .topbar {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .topbar .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .topbar .mark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .topbar .mark b {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+  }
+  .topbar .mark span { opacity: 0.6; }
+  .topbar .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .topbar .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--mustard);
+    box-shadow: 0 0 0 3px rgba(240,184,60,0.18);
+  }
+  .topbar .phone {
+    color: var(--mustard);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color .15s ease;
+  }
+  .topbar .phone:hover { border-color: var(--mustard); }
+  .topbar .hide-sm { display: none; }
+  @media (min-width: 720px) {
+    .topbar .hide-sm { display: inline-flex; }
+  }
+
+  /* ===== Hero awning ===== */
+  .hero {
+    background: var(--bottle);
+    color: var(--cream);
+    position: relative;
+    border-bottom: 1px solid rgba(242,235,218,0.12);
+    overflow: hidden;
+  }
+  .hero::before, .hero::after {
+    content: "";
+    position: absolute; left: 0; right: 0;
+    height: 14px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--mustard) 0 28px,
+      var(--bottle-deep) 28px 56px
+    );
+  }
+  .hero::before { top: 0; }
+  .hero::after  { bottom: 0; }
+
+  .hero-inner {
+    padding-top: 64px;
+    padding-bottom: 56px;
+    position: relative;
+  }
+  @media (min-width: 800px) {
+    .hero-inner { padding-top: 92px; padding-bottom: 80px; }
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  @media (min-width: 980px) {
+    .hero-grid {
+      grid-template-columns: 1.4fr 1fr;
+      gap: 56px;
+      align-items: end;
+    }
+  }
+
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(64px, 14vw, 192px);
+    line-height: 0.82;
+    margin: 18px 0 0;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+  .hero h1 .amp {
+    color: var(--mustard);
+    font-style: italic;
+    font-weight: 700;
+    padding: 0 .04em;
+  }
+  .hero h1 .row2 {
+    display: block;
+  }
+  .hero .kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--mustard);
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero .kicker::before, .hero .kicker::after {
+    content: ""; display: inline-block;
+    width: 28px; height: 1px; background: var(--mustard);
+    opacity: 0.7;
+  }
+  .hero .subline {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(20px, 2.6vw, 30px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin: 22px 0 0;
+    opacity: 0.9;
+  }
+  .hero .subline em {
+    color: var(--mustard);
+    font-style: normal;
+    font-weight: 800;
+  }
+  .hero .lede {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.5vw, 19px);
+    line-height: 1.55;
+    max-width: 38ch;
+    margin: 26px 0 0;
+    color: rgba(242,235,218,0.88);
+  }
+
+  .hero-card {
+    border: 1px solid rgba(242,235,218,0.28);
+    padding: 26px 24px 28px;
+    background: rgba(20,42,30,0.45);
+    display: flex; flex-direction: column;
+    gap: 18px;
+  }
+  .hero-card .lbl {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(242,235,218,0.6);
+  }
+  .hero-card .phone-big {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(38px, 5.4vw, 56px);
+    line-height: 0.95;
+    letter-spacing: 0.005em;
+    color: var(--cream);
+    text-decoration: none;
+    display: inline-block;
+    transition: color .15s ease;
+  }
+  .hero-card .phone-big:hover { color: var(--mustard); }
+  .hero-card .addr {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.4;
+    color: rgba(242,235,218,0.92);
+  }
+  .hero-card .addr a {
+    color: var(--mustard);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(240,184,60,0.45);
+    transition: border-color .15s ease;
+  }
+  .hero-card .addr a:hover { border-color: var(--mustard); }
+  .hero-card .cta-row {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    padding-top: 4px;
+  }
+
+  /* ===== Buttons ===== */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 14px 22px;
+    border: 1.5px solid currentColor;
+    background: transparent;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease, transform .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn--solid {
+    background: var(--mustard);
+    color: var(--ink);
+    border-color: var(--mustard);
+  }
+  .btn--solid:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+  }
+  .btn--ghost-cream {
+    color: var(--cream);
+    border-color: var(--cream);
+  }
+  .btn--ghost-cream:hover {
+    background: var(--cream);
+    color: var(--bottle-deep);
+  }
+  .btn--ghost-ink {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  .btn--ghost-ink:hover {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .btn .arr {
+    display: inline-block;
+    transform: translateY(-1px);
+  }
+
+  /* ===== Marquee ticker ===== */
+  .ticker {
+    background: var(--ink);
+    color: var(--cream);
+    border-top: 1px solid rgba(242,235,218,0.06);
+    border-bottom: 1px solid rgba(242,235,218,0.06);
+    overflow: hidden;
+    padding: 14px 0;
+  }
+  .ticker-track {
+    display: flex;
+    gap: 0;
+    white-space: nowrap;
+    animation: tk 38s linear infinite;
+    will-change: transform;
+  }
+  .ticker-track:hover { animation-play-state: paused; }
+  .ticker-group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .ticker-item {
+    font-family: var(--display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: clamp(20px, 2.2vw, 26px);
+    padding: 0 28px;
+  }
+  .ticker-sep {
+    color: var(--mustard);
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(20px, 2.2vw, 26px);
+  }
+  @keyframes tk {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+  }
+
+  /* ===== Section scaffold ===== */
+  section { padding: 80px 0; }
+  @media (min-width: 800px) { section { padding: 104px 0; } }
+
+  .sec-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 44px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  @media (min-width: 760px) {
+    .sec-head {
+      grid-template-columns: auto 1fr auto;
+      gap: 30px;
+      align-items: baseline;
+    }
+  }
+  .sec-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    color: rgba(20,17,10,0.55);
+    text-transform: uppercase;
+  }
+  .sec-title {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(34px, 5.4vw, 64px);
+    line-height: 0.92;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .sec-meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: rgba(20,17,10,0.55);
+    text-transform: uppercase;
+  }
+
+  /* ===== About ===== */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr; gap: 36px;
+  }
+  @media (min-width: 900px) {
+    .about-grid { grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: start; }
+  }
+  .about-lede {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.6vw, 30px);
+    line-height: 1.32;
+    margin: 0;
+    text-wrap: pretty;
+  }
+  .about-lede em {
+    font-style: italic;
+    color: var(--bottle);
+  }
+  .about-body p {
+    margin: 0 0 14px;
+    font-size: 17px;
+    line-height: 1.62;
+    max-width: 42ch;
+  }
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .factsheet {
+    border-top: 2px solid var(--ink);
+    padding-top: 14px;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+  .factsheet dt {
+    color: rgba(20,17,10,0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 11px;
+    margin-top: 14px;
+  }
+  .factsheet dt:first-child { margin-top: 0; }
+  .factsheet dd {
+    margin: 4px 0 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  /* ===== Services menu ===== */
+  .services {
+    background: var(--paper);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .menu {
+    display: grid; grid-template-columns: 1fr; gap: 0;
+  }
+  @media (min-width: 880px) {
+    .menu { grid-template-columns: 1fr 1fr; column-gap: 60px; }
+  }
+  .menu-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: 10px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .menu-item:last-child { border-bottom: 1px solid var(--rule); }
+  .menu-item .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: rgba(20,17,10,0.45);
+    text-transform: uppercase;
+    align-self: start;
+    padding-top: 6px;
+    min-width: 28px;
+  }
+  .menu-item .body {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .menu-item h3 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height: 1;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .menu-item p {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 15px;
+    line-height: 1.45;
+    color: rgba(20,17,10,0.78);
+    max-width: 38ch;
+  }
+  .menu-item .price {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    align-self: start;
+    padding-top: 6px;
+    white-space: nowrap;
+  }
+  .menu-item .price.in-shop {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(20,17,10,0.55);
+    text-transform: uppercase;
+  }
+  .menu-foot {
+    margin-top: 30px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(20,17,10,0.6);
+    display: flex; flex-wrap: wrap; gap: 8px 18px;
+  }
+
+  /* ===== Promo strip (back-to-school) ===== */
+  .promo {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 0;
+  }
+  .promo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 0;
+  }
+  @media (min-width: 900px) {
+    .promo-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .promo-text {
+    padding: 70px 22px 70px;
+    display: flex; flex-direction: column; justify-content: center;
+    gap: 22px;
+  }
+  @media (min-width: 800px) {
+    .promo-text { padding: 110px 60px; }
+  }
+  .promo-text .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--mustard);
+  }
+  .promo-text h2 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(40px, 5.6vw, 72px);
+    line-height: 0.92;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .promo-text h2 em {
+    color: var(--mustard);
+    font-style: normal;
+  }
+  .promo-text p {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.55;
+    margin: 0;
+    color: rgba(242,235,218,0.85);
+    max-width: 44ch;
+  }
+  .promo-text .fineprint {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(242,235,218,0.6);
+    margin-top: 6px;
+  }
+  .promo-img {
+    position: relative;
+    min-height: 360px;
+    background: #2A4A3A;
+  }
+  .promo-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  @media (min-width: 900px) {
+    .promo-img { min-height: 100%; }
+  }
+
+  /* ===== Testimonies ===== */
+  .quotes {
+    background: var(--cream);
+  }
+  .quotes-list {
+    display: flex; flex-direction: column;
+    border-top: 1px solid var(--rule);
+  }
+  .quote {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 44px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  @media (min-width: 800px) {
+    .quote {
+      grid-template-columns: 80px 1fr 200px;
+      gap: 36px;
+      padding: 56px 0;
+      align-items: start;
+    }
+  }
+  .quote .qmark {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 96px;
+    line-height: 0.7;
+    color: var(--mustard);
+    margin: 0;
+  }
+  .quote blockquote {
+    margin: 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 2.6vw, 32px);
+    line-height: 1.28;
+    letter-spacing: -0.005em;
+    text-wrap: pretty;
+    color: var(--ink);
+  }
+  .quote .attrib {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(20,17,10,0.65);
+    align-self: end;
+    padding-top: 6px;
+    border-top: 1px solid var(--rule);
+  }
+  .quote .attrib b {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ===== Visit ===== */
+  .visit {
+    background: var(--bottle);
+    color: var(--cream);
+  }
+  .visit .sec-head { border-bottom-color: var(--rule-cream); }
+  .visit .sec-num, .visit .sec-meta { color: rgba(242,235,218,0.55); }
+  .visit-grid {
+    display: grid; grid-template-columns: 1fr; gap: 28px;
+  }
+  @media (min-width: 900px) {
+    .visit-grid { grid-template-columns: 1fr 1.1fr; gap: 48px; }
+  }
+  .ticket {
+    border: 1px solid rgba(242,235,218,0.32);
+    background: rgba(20,42,30,0.45);
+    padding: 28px 26px 30px;
+  }
+  .ticket h3 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0 0 16px;
+    color: var(--mustard);
+  }
+  .hours {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+  }
+  .hours td {
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(242,235,218,0.18);
+  }
+  .hours tr:last-child td { border-bottom: 0; }
+  .hours .day {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(242,235,218,0.85);
+    font-size: 12px;
+  }
+  .hours .time {
+    text-align: right;
+    color: var(--cream);
+    font-weight: 500;
+  }
+  .hours tr.today .day,
+  .hours tr.today .time {
+    color: var(--mustard);
+  }
+  .hours tr.today .day::before {
+    content: "▸ ";
+    color: var(--mustard);
+  }
+
+  .ticket .addr-block {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(242,235,218,0.18);
+  }
+  .ticket .addr-block .lbl {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(242,235,218,0.6);
+  }
+  .ticket .addr-block .lines {
+    margin-top: 6px;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.15;
+  }
+  .ticket .addr-block .lines a {
+    color: var(--mustard);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(240,184,60,0.4);
+  }
+  .ticket .addr-block .lines a:hover { border-color: var(--mustard); }
+
+  .map {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border: 1px solid rgba(242,235,218,0.32);
+    background: var(--bottle-deep);
+    overflow: hidden;
+  }
+  .map iframe {
+    width: 100%; height: 100%;
+    border: 0;
+    filter: grayscale(0.2) contrast(1.05);
+  }
+  @media (min-width: 900px) {
+    .map { aspect-ratio: auto; height: 100%; min-height: 420px; }
+  }
+
+  /* ===== Final CTA ===== */
+  .cta-final {
+    background: var(--mustard);
+    color: var(--ink);
+    padding-top: 70px;
+    padding-bottom: 70px;
+    text-align: left;
+  }
+  .cta-final .wrap {
+    display: grid; grid-template-columns: 1fr; gap: 24px;
+    align-items: center;
+  }
+  @media (min-width: 800px) {
+    .cta-final .wrap { grid-template-columns: 1fr auto; gap: 40px; }
+  }
+  .cta-final h2 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(36px, 5.4vw, 64px);
+    line-height: 0.92;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .cta-final p {
+    margin: 10px 0 0;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* ===== Footer ===== */
+  .foot {
+    background: var(--ink);
+    color: var(--cream);
+    padding-top: 56px;
+    padding-bottom: 32px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .foot-grid {
+    display: grid; grid-template-columns: 1fr; gap: 40px;
+  }
+  @media (min-width: 800px) {
+    .foot-grid { grid-template-columns: 2fr 1fr 1fr; gap: 56px; }
+  }
+  .foot h4 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+    color: var(--mustard);
+  }
+  .foot .signoff {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 0.9;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin: 0 0 14px;
+  }
+  .foot .signoff .amp { color: var(--mustard); font-style: italic; font-weight: 700; }
+  .foot .blurb {
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-family: var(--serif);
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(242,235,218,0.7);
+    max-width: 36ch;
+  }
+  .foot a {
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(242,235,218,0.25);
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .foot a:hover { color: var(--mustard); border-color: var(--mustard); }
+  .foot ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .foot .rule {
+    border-top: 1px solid rgba(242,235,218,0.14);
+    margin: 40px 0 18px;
+  }
+  .foot .credit {
+    display: flex; flex-wrap: wrap; gap: 8px 22px;
+    justify-content: space-between;
+    align-items: baseline;
+    color: rgba(242,235,218,0.5);
+    text-transform: none;
+    letter-spacing: 0.04em;
+    font-size: 12px;
+  }
+  .foot .credit em {
+    font-style: italic;
+    color: rgba(242,235,218,0.7);
+  }
+
+  /* Skip link for a11y */
+  .skip {
+    position: absolute; left: -9999px; top: 0;
+    background: var(--mustard); color: var(--ink);
+    padding: 10px 14px;
+    font-family: var(--mono); font-size: 12px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    z-index: 99;
+  }
+  .skip:focus { left: 8px; top: 8px; }
+
+  ::selection { background: var(--mustard); color: var(--ink); }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to content</a>
+
+<!-- Top utility bar -->
+<header class="topbar" role="banner">
+  <div class="wrap row">
+    <div class="mark">
+      <b>S&nbsp;&amp;&nbsp;B</b>
+      <span>Covina, CA · Dry Cleaners</span>
+    </div>
+    <div class="status hide-sm" aria-live="polite">
+      <span class="dot" aria-hidden="true"></span>
+      <span id="open-status">Open today · 7am – 6pm</span>
+    </div>
+    <a class="phone" href="tel:+16266336868" aria-label="Call Suds and Bubbles">
+      (626) 633-6868
+    </a>
+  </div>
+</header>
+
+<!-- Hero awning -->
+<section class="hero" id="main" aria-labelledby="brand">
+  <div class="hero-inner wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="kicker">Est. Covina · 265 E Rowland St</span>
+        <h1 id="brand">
+          Suds <span class="amp">&amp;</span>
+          <span class="row2">Bubbles</span>
+        </h1>
+        <p class="subline">Dry Cleaners · <em>Tailoring</em> · Wash &amp; Fold</p>
+        <p class="lede">
+          Mr. Lee's neighborhood cleaner — the kind of shop where they know your name, your jacket, and exactly how you like your shirts pressed. In Covina since the days when that still meant something.
+        </p>
+      </div>
+
+      <aside class="hero-card" aria-label="Call us">
+        <span class="lbl">Open now — pick up by 6pm</span>
+        <a class="phone-big" href="tel:+16266336868">(626)<br>633&#8209;6868</a>
+        <div class="addr">
+          265 E Rowland St<br>
+          Covina, CA 91723 ·
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=265+E+Rowland+St+Covina+CA+91723" target="_blank" rel="noopener">Directions</a>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn--solid" href="tel:+16266336868">
+            Call Now <span class="arr">→</span>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Service ticker -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-group">
+      <span class="ticker-item">Dry Cleaning</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Shirt Laundry</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Tailoring</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Pant Hemming</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Wash &amp; Fold</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Leather &amp; Suede</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Wedding Dress</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Down Comforters</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Same-Week Service</span><span class="ticker-sep">✦</span>
+    </div>
+    <div class="ticker-group" aria-hidden="true">
+      <span class="ticker-item">Dry Cleaning</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Shirt Laundry</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Tailoring</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Pant Hemming</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Wash &amp; Fold</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Leather &amp; Suede</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Wedding Dress</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Down Comforters</span><span class="ticker-sep">✦</span>
+      <span class="ticker-item">Same-Week Service</span><span class="ticker-sep">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- About -->
+<section aria-labelledby="about-title">
+  <div class="wrap">
+    <header class="sec-head">
+      <div class="sec-num">№ 01</div>
+      <h2 id="about-title" class="sec-title">The Cheers of dry&nbsp;cleaning</h2>
+      <div class="sec-meta">About the shop</div>
+    </header>
+
+    <div class="about-grid">
+      <p class="about-lede">
+        A small, family-run shop on East Rowland — where suits come out crisper, hemlines come up clean, and <em>Mr.&nbsp;Lee remembers your name on the second visit</em>.
+      </p>
+
+      <div class="about-body">
+        <p>
+          Suds &amp; Bubbles has been Covina's go-to for full-service dry cleaning, shirt laundry and tailoring for years. The shop runs the way good neighborhood businesses always have: fair prices, careful work, and a counter where people actually talk to each other.
+        </p>
+        <p>
+          We handle the everyday — slacks, button-downs, blouses, the wash &amp; fold pile that's been growing in the corner — and the once-in-a-lifetime: wedding dresses, leather jackets, suit alterations that need to fit just right.
+        </p>
+
+        <dl class="factsheet" aria-label="At a glance">
+          <dt>Family-run</dt>
+          <dd>Mr. Lee, on the counter</dd>
+          <dt>Open</dt>
+          <dd>Seven days a week</dd>
+          <dt>Pay how you like</dt>
+          <dd>Cards · Cash · Wi-Fi inside</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services / price list -->
+<section class="services" aria-labelledby="services-title">
+  <div class="wrap">
+    <header class="sec-head">
+      <div class="sec-num">№ 02</div>
+      <h2 id="services-title" class="sec-title">Service Menu</h2>
+      <div class="sec-meta">Prices on request</div>
+    </header>
+
+    <div class="menu">
+      <div class="menu-item">
+        <span class="num">01</span>
+        <div class="body">
+          <h3>Dry Cleaning</h3>
+          <p>Suits, jackets, slacks, dresses, blouses. Pressed, plastic-wrapped, hung on the rack with your ticket clipped to the hanger.</p>
+        </div>
+        <span class="price in-shop">Ask in shop</span>
+      </div>
+
+      <div class="menu-item">
+        <span class="num">02</span>
+        <div class="body">
+          <h3>Shirt Laundry</h3>
+          <p>Starched the way you want them — light, medium, or heavy. Folded or on hangers, your call.</p>
+        </div>
+        <span class="price in-shop">Per shirt</span>
+      </div>
+
+      <div class="menu-item">
+        <span class="num">03</span>
+        <div class="body">
+          <h3>Tailoring &amp; Alterations</h3>
+          <p>Hems, cuffs, waistlines, sleeve length. Everyday fixes and the more complicated work — we'll fit you at the counter.</p>
+        </div>
+        <span class="price in-shop">By the job</span>
+      </div>
+
+      <div class="menu-item">
+        <span class="num">04</span>
+        <div class="body">
+          <h3>Pant Hemming</h3>
+          <p>The quick one. Drop them off, pick them up — back-to-school flat rate currently in effect.</p>
+        </div>
+        <span class="price">$10</span>
+      </div>
+
+      <div class="menu-item">
+        <span class="num">05</span>
+        <div class="body">
+          <h3>Wash &amp; Fold</h3>
+          <p>Drop your bag, we'll wash, dry, fold, and have it ready. Easy.</p>
+        </div>
+        <span class="price in-shop">Per pound</span>
+      </div>
+
+      <div class="menu-item">
+        <span class="num">06</span>
+        <div class="body">
+          <h3>Leather &amp; Suede</h3>
+          <p>Specialty cleaning for jackets, coats and shoes. Gentle on the leather, hard on the stains.</p>
+        </div>
+        <span class="price in-shop">Quoted in shop</span>
+      </div>
+
+      <div class="menu-item">
+        <span class="num">07</span>
+        <div class="body">
+          <h3>Wedding Dress</h3>
+          <p>Pre-wedding press or full post-wedding cleaning and preservation. Bring it in — we'll walk you through it.</p>
+        </div>
+        <span class="price in-shop">By the dress</span>
+      </div>
+
+      <div class="menu-item">
+        <span class="num">08</span>
+        <div class="body">
+          <h3>Down Comforters &amp; Linens</h3>
+          <p>The bulky stuff your home machine won't touch. Comforters, duvets, blankets, drapes.</p>
+        </div>
+        <span class="price in-shop">Quoted in shop</span>
+      </div>
+    </div>
+
+    <div class="menu-foot">
+      <span>Cards accepted</span><span>·</span>
+      <span>Cash accepted</span><span>·</span>
+      <span>Wi-Fi inside</span><span>·</span>
+      <span>Bike parking out front</span>
+    </div>
+  </div>
+</section>
+
+<!-- Promo strip: back-to-school -->
+<section class="promo" aria-labelledby="promo-title">
+  <div class="promo-grid">
+    <div class="promo-text">
+      <span class="tag">Now on at the counter</span>
+      <h2 id="promo-title">
+        Back-to-school<br>
+        pant hemming —<br>
+        <em>just $10.</em>
+      </h2>
+      <p>
+        Get the kids' uniform pants — and your own — sized up before the term starts. Flat $10 hem, ready in days, not weeks. Walk in, drop off, done.
+      </p>
+      <div class="cta-row" style="display:flex; gap:10px; flex-wrap:wrap; padding-top:4px;">
+        <a class="btn btn--solid" href="tel:+16266336868">Call Now <span class="arr">→</span></a>
+        <a class="btn btn--ghost-cream" href="https://www.google.com/maps/dir/?api=1&amp;destination=265+E+Rowland+St+Covina+CA+91723" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+      <p class="fineprint">Promotion shown is the in-shop poster · Students &amp; teachers</p>
+    </div>
+    <div class="promo-img">
+      <img
+        src="assets/back-to-school-special.png"
+        alt="Back-to-school special — pant hemming for just $10 — poster in the shop window">
+    </div>
+  </div>
+</section>
+
+<!-- Testimonies -->
+<section class="quotes" aria-labelledby="quotes-title">
+  <div class="wrap">
+    <header class="sec-head">
+      <div class="sec-num">№ 03</div>
+      <h2 id="quotes-title" class="sec-title">In their words</h2>
+      <div class="sec-meta">Regulars, on the counter</div>
+    </header>
+
+    <div class="quotes-list">
+      <article class="quote">
+        <span class="qmark" aria-hidden="true">“</span>
+        <blockquote>
+          The best cleaners in Covina — hands down the best. It's like the <em>Cheers</em> of the dry-cleaning world: efficient, friendly, and everybody knows our name.
+        </blockquote>
+        <div class="attrib">
+          <b>John K.</b>
+          Covina · Regular
+        </div>
+      </article>
+
+      <article class="quote">
+        <span class="qmark" aria-hidden="true">“</span>
+        <blockquote>
+          Mr. Lee is the best. Been doing business there for years — always fair, friendly, and quality service.
+        </blockquote>
+        <div class="attrib">
+          <b>Kenneth V.</b>
+          Covina · Longtime customer
+        </div>
+      </article>
+
+      <article class="quote">
+        <span class="qmark" aria-hidden="true">“</span>
+        <blockquote>
+          Had my grandfather drop off my suit because I needed a new cleaner. They did a great job, and the price was better than expected. Making this place my regular cleaner.
+        </blockquote>
+        <div class="attrib">
+          <b>Adan E.</b>
+          From Bellflower
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Visit -->
+<section class="visit" aria-labelledby="visit-title">
+  <div class="wrap">
+    <header class="sec-head">
+      <div class="sec-num">№ 04</div>
+      <h2 id="visit-title" class="sec-title">Find the shop</h2>
+      <div class="sec-meta">Open seven days</div>
+    </header>
+
+    <div class="visit-grid">
+      <div class="ticket">
+        <h3>Hours</h3>
+        <table class="hours" id="hours-table">
+          <tbody>
+            <tr data-day="1"><td class="day">Mon</td><td class="time">7:00am – 6:00pm</td></tr>
+            <tr data-day="2"><td class="day">Tue</td><td class="time">7:00am – 6:00pm</td></tr>
+            <tr data-day="3"><td class="day">Wed</td><td class="time">7:00am – 6:00pm</td></tr>
+            <tr data-day="4"><td class="day">Thu</td><td class="time">7:00am – 6:00pm</td></tr>
+            <tr data-day="5"><td class="day">Fri</td><td class="time">7:00am – 6:00pm</td></tr>
+            <tr data-day="6"><td class="day">Sat</td><td class="time">9:00am – 2:00pm</td></tr>
+            <tr data-day="0"><td class="day">Sun</td><td class="time">9:00am – 2:00pm</td></tr>
+          </tbody>
+        </table>
+
+        <div class="addr-block">
+          <div class="lbl">Address</div>
+          <div class="lines">
+            265 E Rowland St<br>
+            Covina, CA 91723<br>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=265+E+Rowland+St+Covina+CA+91723" target="_blank" rel="noopener">Get Directions →</a>
+          </div>
+        </div>
+
+        <div class="addr-block">
+          <div class="lbl">Phone</div>
+          <div class="lines">
+            <a href="tel:+16266336868">(626) 633-6868</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="map" aria-label="Map showing Suds and Bubbles at 265 E Rowland St, Covina, CA">
+        <iframe
+          src="https://www.google.com/maps?q=265+E+Rowland+St,+Covina,+CA+91723&amp;output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Suds &amp; Bubbles, 265 E Rowland St, Covina, CA">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="cta-final" aria-labelledby="cta-title">
+  <div class="wrap">
+    <div>
+      <h2 id="cta-title">Pick up the phone — Mr. Lee's waiting.</h2>
+      <p>Same-week turnaround on most everything · Walk-ins welcome</p>
+    </div>
+    <a class="btn btn--ghost-ink" href="tel:+16266336868">
+      Call (626) 633-6868 <span class="arr">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>The shop</h4>
+        <div class="signoff">Suds <span class="amp">&amp;</span> Bubbles</div>
+        <p class="blurb">A neighborhood dry cleaner on East Rowland — careful work, fair prices, and the kind of counter where everybody knows your name.</p>
+      </div>
+
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>265 E Rowland St</li>
+          <li>Covina, CA 91723</li>
+          <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=265+E+Rowland+St+Covina+CA+91723" target="_blank" rel="noopener">Get directions ↗</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+16266336868">(626) 633-6868</a></li>
+          <li>Mon – Fri · 7a – 6p</li>
+          <li>Sat – Sun · 9a – 2p</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+    <div class="credit">
+      <span>© <span id="yr">2026</span> Suds &amp; Bubbles · Covina, CA</span>
+      <em>Mockup designed by [Your Name] — interested in making this yours? [you@example.com]</em>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Highlight today's row + write open/closed status
+  (function () {
+    var now = new Date();
+    var dow = now.getDay(); // 0 = Sun
+    var row = document.querySelector('tr[data-day="' + dow + '"]');
+    if (row) row.classList.add('today');
+
+    var openH, closeH;
+    if (dow === 0 || dow === 6) { openH = 9;  closeH = 14; }
+    else                        { openH = 7;  closeH = 18; }
+
+    var h = now.getHours() + now.getMinutes() / 60;
+    var statusEl = document.getElementById('open-status');
+    if (!statusEl) return;
+
+    function fmt(n){
+      var ap = n >= 12 ? 'pm' : 'am';
+      var hh = ((n + 11) % 12) + 1;
+      return hh + ap;
+    }
+
+    if (h >= openH && h < closeH) {
+      statusEl.textContent = 'Open today · until ' + fmt(closeH);
+    } else if (h < openH) {
+      statusEl.textContent = 'Opens today at ' + fmt(openH);
+    } else {
+      statusEl.textContent = 'Closed now · back ' + (dow === 6 ? 'Sun' : dow === 0 ? 'Mon' : 'tomorrow') + ' at ' + fmt(dow === 5 || dow === 6 ? 9 : 7) + 'am';
+      // Simpler fallback line:
+      statusEl.textContent = 'Closed now · opens ' + (dow === 6 ? 'Sun 9am' : dow === 0 ? 'Mon 7am' : 'tomorrow');
+    }
+  })();
+</script>
+
+</body>
+</html>
